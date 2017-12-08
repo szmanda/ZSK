@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+void CzyPierwsza()
+{
+    int liczba; 
+    cin>>liczba;
+    for (int i=2;i<=liczba;i++){
+        if (liczba%i){
+            
+        }
+        
+        if (i==liczba){
+            cout<<"liczba jest liczba pierwsza";
+            break;
+        }
+    }
+}
+
+int main()
+{
+    int i=1;
+    int suma=0;
+    while(i<=50){
+        cout<<i<<" ";
+        suma+=i;
+        i++;
+    }
+    cout<<"\nsuma wynosi: "<<suma;
+    
+    CzyPierwsza();
+    
+    return 0;
+}
