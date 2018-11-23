@@ -48,12 +48,12 @@ int main()
     int y = 5;
     int z = 10;
 
-    //Prze³adowanie/Przeci¹¿enie funkcji ze wzglêdu na liczbê parametrów
+    //PrzeÂ³adowanie/PrzeciÂ¹Â¿enie funkcji ze wzglÃªdu na liczbÃª parametrÃ³w
     cout<<"jeden arg: "<<f1ObliczSume(x)<<endl;
     cout<<"dwa arg: "<<f1ObliczSume(x,z)<<endl;
     cout<<"trzy arg: "<<f1ObliczSume(x,z,z)<<endl<<endl;
 
-    //Prze³adowanie/Przeci¹¿enie funkcji ze wzglêdu na typ parametrów
+    //PrzeÂ³adowanie/PrzeciÂ¹Â¿enie funkcji ze wzglÃªdu na typ parametrÃ³w
     int a=3;
     double b=5.7;
     double g=2.21;
@@ -65,7 +65,7 @@ int main()
     f2Wypisz(c);
     cout<<endl<<endl;
 
-    //Prze³adowanie/Przeci¹¿enie funkcji ze wzglêdu na typ i liczbê parametrów
+    //PrzeÂ³adowanie/PrzeciÂ¹Â¿enie funkcji ze wzglÃªdu na typ i liczbÃª parametrÃ³w
     cout<<"int + double = "<<f3Oblicz(a,b)<<endl;
     cout<<"int + int = "<<f3Oblicz(a,x)<<endl;
     cout<<"double + double = "<<f3Oblicz(b,g)<<endl;
