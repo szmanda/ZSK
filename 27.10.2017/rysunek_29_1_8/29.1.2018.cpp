@@ -38,7 +38,7 @@ int main()
     }
     */
 
-    //wyœwietlanie wszystkich liczb calkowytycz miêdzy podanymi
+    //wyÅ“wietlanie wszystkich liczb calkowytycz miÃªdzy podanymi
     int x, y;
     cout<<"Podaj x i y;";
     cin>>x>>y;
