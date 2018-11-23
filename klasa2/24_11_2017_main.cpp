@@ -16,7 +16,7 @@ int main(){
     cout<<"silnia = "<<silnia<<endl<<endl<<endl;
 
 
-    //nie dzia³¹
+    //nie dziaÅ‚Ä…
     /*
     cout<<"Liczba doskonala: \n 6=1+2+3 \n 28=1+2+4+6+7+14\n\n";
     cout<<"liczba ktora jest suma wszystkich swoich dzialnikow\n\n";
@@ -41,9 +41,6 @@ int main(){
     }
     */
 
-
-
-
     //konwersje dec, hec, oct;
     int k=100;
     cout<<"k = "<<k<<"\n";
@@ -56,13 +53,13 @@ int main(){
     cout<<"\n"<<fixed<<setprecision(3)<<k;
 
     zadanie domowe:
-    zamieñ podan¹ z klawiatury liczbê na systemy
+    zamieÅ„ podanÄ… z klawiatury liczbÄ™ na systemy
     liczbowe:
-        binarny, dziesiêtny szesnastkowy, ósemkowy, siódemkowy:
+        binarny, dziesiÄ™tny szesnastkowy, Ã³semkowy, siÃ³demkowy:
             ze switch
 
-    Uzytkownik podaje z klawiatury adres ip, zamieñ na liczbê
-    binarn¹ i uzupe³nij ka¿dy oktet do oœmiu znaków.
+    Uzytkownik podaje z klawiatury adres ip, zamieÅ„ na liczbÄ™
+    binarnÄ… i uzupeÅ‚nij kaÅ¼dy oktet do oÅ›miu znakÃ³w.
 
     return 0;
 }
