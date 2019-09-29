@@ -82,6 +82,43 @@
   //zmienna superglobalne
   //$_GET, $_POST, $_COOKIE, $_FILES, $_SESSION, $_SERVER
 
+  echo $_SERVER['SERVER_PORT'],'<br>';  // 80
+  echo $_SERVER['SERVER_NAME'],'<br>';  // 127.0.0.1
+  echo $_SERVER['SERVER_NAME'],'<br>';
+  echo $_SERVER['SERVER_PROTOCOL'],'<br>'; // HTTP/1.1
+  echo $_SERVER['DOCUMENT_ROOT'],'<br>'; // C:/xampp/htdocs
+
+  //$localFile = $SERVER['DOCUMENT_ROOT'].$_SERVER['SCRIPT_NAME'].'<br>';
+  $localFile = $_SERVER['DOCUMENT_ROOT'];
+  $localFile .= $_SERVER['SCRIPT_NAME'].'<br>';
+
+  //stałe
+  // nazwy z dużych liter
+  define('NAME','Janusz');
+  echo NAME;
+
+  define('name','Janusz');
+  echo name;
+
+  define('SURNAME','Janusz',true);
+  echo suRNamE;
+
+  ##############################
+  //stałe predefiniowane
+
+  echo PHP_VERSION;
+
+  //MOŻLIWE PORÓWNANIE STRING Z float
+  if (PHP_VERSION > 5.6)
+    echo 'Nowa wersja php';
+  else
+    echo 'stara wersja php';
+
+  echo PHP_OS;
+  echo __LINE__; //wskazuje numer lini
+  echo __FILE__; //ścieżka do pliku
+  echo __DIR__; //ścieżka do folderu
+
     ?>
   </body>
 </html>
