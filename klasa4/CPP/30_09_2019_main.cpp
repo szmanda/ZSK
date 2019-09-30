@@ -32,10 +32,10 @@ int main()
     cin>>nazwa;     //pobranie nazwy od usera
     ofstream wyniki(nazwa);     // otwarcie/utworzenie pliku
     wyniki<<'s';    // do pliku dopiszemyt liter� s
-    wyniki.close()
+    wyniki.close();
 
     //kontrola błędów
-    wyniki.open(out.txt);
+    wyniki.open("out.txt");
     if(!wyniki){
         cout<<"nie można otworzyć pliku";
         return 1;
