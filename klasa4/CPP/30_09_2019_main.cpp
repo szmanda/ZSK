@@ -45,7 +45,21 @@ int main()
     }
 
     //odczyt z pliku
+    plik.open("ala.txt", ios::in);
+    if(plik.good() == true)
+    {
+        while(!plik.eof())
+        {
+            getline(plik, linia);
+            cout << linia << endl; //wyświetlenie linii
+        }
+        plik.close();
+    }
 
+
+    /*  zadanie domowe (projekt)
+        napisać w czymkolwiek byle bez kodu sortowanie bombelkowe i przez wybór
+        np w excelu. prace przesłać na email. */
 
     return 0;
 }
