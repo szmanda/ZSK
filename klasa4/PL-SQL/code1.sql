@@ -1,0 +1,206 @@
+-- Start kursu PL/SQL --
+
+--Bloki anonimowe
+
+BEGIN
+Null;
+END;
+
+--Procedury przechowywane w bazie danych zarówno w postaci skompilowanej iak i kodzie
+
+CREATE OR REPLACE PROCEDURE xyz IS
+BEGIN
+Null;
+END;
+
+-- BEZ REPLACE TEŻ WEJDZIE
+
+CREATE PROCEDURE ADI IS
+BEGIN
+Null;
+END;
+
+-- DROP PROCEDURE
+
+DROP PROCEDURE XYZ;
+
+-- FUNCKA JAKO BLOK NAZWANY
+
+CREATE OR REPLACE FUNCTION ADI_A
+RETURN VARCHAR
+IS
+BEGIN
+RETURN 'TEST';
+END;
+
+-- DUAL - PSEUDOTABELA DUAL ZAWIERAJACA JEDEN WIERSZ I JEDNA KOLUMNE
+
+SELECT ADI_A FROM DUAL;
+
+DROP FUNCTION ADI_A;
+
+-- WYZWALACAE JAKO BLOKI W PROGRAMOWANIU
+
+CREATE OR REPLACE TRIGGER TRIGGER_A
+BEFORE INSERT ON DEPARTMENTS
+BEGIN
+Null;
+END;
+
+-- WYWOYWANIE PROCEDUR I FUNKCJI
+
+CREATE OR REPLACE FUNCTION FUNCTION_A
+RETURN NUMBER
+IS
+BEGIN
+RETURN 0;
+END;
+
+SELECT FUNCTION_A FROM DUAL;
+
+-- WYNIK I FUNCJA I WARTOŒÆ
+
+DECLARE
+wynik NUMBER;
+BEGIN
+wynik:=FUNCTION_A;
+END;
+
+--  NIE MOZEMY WYWOLAC FUNKCJI TAK JAK PROCEDURE PONIZSZE NIE DZIALA
+
+BEGIN
+FUNCTION_A;
+END;
+
+DECLARE
+zmienna_liczbowa NUMBER(5);
+zmienna_tekstowa VARCHAR(2);
+zmienna_niepusta VARCHAR2(100) not null := 'dane';
+zmienna_typu_kolumny employees.email%TYPE;
+stala_liczbowa CONSTANT NUMBER(5) := 10;
+BEGIN
+Null;
+END;
+
+-- zmienne recordowe
+
+DECLARE
+TYPE moj_wlasny IS RECORD(
+zmienna1 NUMBER(6),
+zmienna2 VARCHAR(30),
+zmienna3 BOOLEAN
+);
+prawie_obiekt wlasny;
+BEGIN
+prawie_obiekt.zmienna1:=100;
+prawie_obiekt.zmienna2:='tekst';
+prawie_obiekt.zmienna3:=true;
+END;
+
+--%ROWTYPE - STOSOWANY PRZY DEFINIOWANIU TYPÓW REKORDOWYCH
+--DEKLARUJE ZMIENNA REOKORDOWA O KONSTRUKCJI OPARTEJ  NA TABELI, lub na
+
+DECLARE
+zmienna1 jobs%ROWTYPE;
+BEGIN
+zmienna1.job_title := 'dyrektor';
+zmienna1.max_salary := '1000';
+END;
+
+DECLARE
+TYPE fallout IS RECORD(
+v1 NUMBER(6),
+V2 NUMBER(3) DEFAULT 0,
+v3 VARCHAR(255) DEFAULT 'NIE DEFININOWANY',
+v4 NUMBER(7) NOT NULL DEFAULT :=0,
+v5 NUMBER(6) NOT NULL DEFAULT 0,
+V6 JOBS%ROWTYPE
+);
+moj_rekord_fallout;
+BEGIN
+Null;
+END;
+
+--BLOK ANONIMOWY KTÓRY DA NAM WYNIK WYJSCIOWY STATYCZNY TEKSTOWY
+
+SET SERVEROUTPUT ON;
+DECLARE
+BEGIN
+SYS.DBMS_OUTPUT.PUT_LINE('FALLOUT 76 NADCHODZI');
+END;
+
+
+--PĘTLA
+
+DECLARE
+ZM NUMBER(5);
+BEGIN
+ZM:=1;
+LOOP
+DBMS_OUTPUT.PUT_LINE('WARTOSC ZMIENNEJ WYNOSI '||ZM);
+ZMIENNA:=ZM+1;
+IF ZM > 20
+THEN EXIT;
+END IF;
+END LOOP;
+END;
+END;
+
+FOR kroki_do_przodu IN 1..20
+LOOP
+DBMS_OUTPUT.PUT_LINE('WARTOSC ZMIENNEJ WYNOSI '||kroki_do_przodu);
+END LOOP;
+END;
+
+SET SERVEROUTPUT ON;
+DECLARE
+liczba VARCHAR2(5) := '12345';
+dlugosc NUMBER(2);
+odwrocona VARCHAR2(5);
+BEGIN
+dlugosc:=LENGTH(liczba);
+FOR licz IN REVERSE 1..dlugosc
+LOOP
+odwrocona:=odwrocona || SUBSTR(liczba, licz, 1);
+END LOOP;
+DBMS_OUTPUT.PUT_LINE('liczba = '||odwrocona);
+END;
+
+DECLARE
+var1 NUMBER(5);
+var2 NUMBER(5);
+BEGIN
+IF var1 > 10
+THEN var2 := var1 +20;
+ELSE var2 := var2 +var1;
+END IF;
+END;
+
+
+CREATE OR REPLACE FUNCTION PRZYCHOD
+(name in VARCHAR2)
+RETURN VARCHAR2
+IS
+miesieczna_wartosc NUMBER(6)
+Ipoziom VARCHAR2(20);
+CURSOR cl is
+SELECT SALARY
+FORM EMPLOYEES
+WHERE last_name = name_in;
+begin
+open cl;
+fetch cl into miesieczna_wartosc;
+close cl;
+IF miesieczna_wartosc <= 4000 THEN
+Ipoziom := 'Niski przychod';
+ELSEIF miesieczna_wartosc > 4000 AND
+miesieczna_wartosc <= 7000 THEN
+Ipoziom := 'Sredni przychod';
+ELSEIF miesieczna_wartosc > 7000 AND
+miesieczna_wartosc <=12000 THEN
+Ipoziom := 'Umiarkowany przychod';
+ELSE
+Ipoziom := 'Wysoki przychod';
+END IF;
+RETURN Ipoziom;
+END;
