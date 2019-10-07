@@ -33,8 +33,21 @@ CREATE TABLE stdUser (
   ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=INNODB;
 
+CREATE TABLE lang(
+  id_lang INT(10) UNSIGNED NOT NULL,
+  lang_name VARCHAR(25) NOT NULL,
+  icon_path VARCHAR(100) NULL,
+  description VARCHAR(250) NULL,
+  PRIMARY KEY (id_lang)
+)ENGINE=INNODB;
 
---needs a table lang and table wordCategory
+CREATE TABLE wordCategory(
+  id_category INT(10) UNSIGNED NOT NULL,
+  category_name VARCHAR(25) NOT NULL,
+  PRIMARY KEY (id_category)
+)ENGINE=INNODB;
+
+-- needs a table lang and table wordCategory
 CREATE TABLE word (
   id_word INT(10) UNSIGNED NOT NULL,
   word VARCHAR(50) NULL,
@@ -42,5 +55,11 @@ CREATE TABLE word (
   id_translation INT(10) UNSIGNED NULL,
   id_lang INT(10) UNSIGNED NULL,
   id_category INT(10) UNSIGNED NULL,
-  PRIMARY KEY (id_word)
+  PRIMARY KEY (id_word),
+  FOREIGN KEY (id_lang) REFERENCES lang(id_lang)
+  ON UPDATE CASCADE ON DELETE RESTRICT,
+  FOREIGN KEY (id_category) REFERENCES wordCategory(id_category)
+  ON UPDATE CASCADE ON DELETE SET NULL
 )ENGINE=INNODB;
+
+CREATE INDEX Translation_idex ON word(id_translation);
