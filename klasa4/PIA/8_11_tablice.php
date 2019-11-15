@@ -43,7 +43,7 @@
 
       $data = array(
         'imie' => 'Kinga',
-        'nazwisklo' => 'Nowak',
+        'nazwisko' => 'Nowak',
         'wiek' => 20
       );
       function showArrayAssoc($data){
@@ -53,6 +53,7 @@
         echo '<br>';
       }
       showArrayAssoc($data);
+      Show($data);
 
       echo $data['nazwisko'];
       echo "<br>$data[nazwisko]"; // należy usunąć apostrofy inaczej błąd WHITESPACE
@@ -62,8 +63,8 @@
 
       $student  = array(
         array('Katarzyna','Nowak'),
-        array('Katarzyna'),
-        array('Katarzyna','Nowak',45,23.54)
+        array('Maciej'),
+        array('Piotr','Kowalski',45,23.54)
       );
 
       for ($i=0; $i < count($student) ; $i++) { // count w tym miejscu jest nieoptymalne
@@ -71,6 +72,56 @@
           echo $student[$i][$j],' ';
         }
       }
+
+      // sortowanie tablic
+      echo '<hr>';
+      $tab = array(10,2,1000,5,75,-4);
+      function Show($tab){
+        foreach ($tab as $key => $item) {
+          echo "||$key : $item ";
+        }
+        echo "<br>";
+      }
+      Show($tab);
+      sort($tab); // rosnąco
+      Show($tab);
+      rsort($tab); // malejąco
+
+      // sortowanie tablicy asocjacyjnej
+      $tabAssoc = array(
+        "surname" => "Nowak",
+        "name" => "Anna",
+        "age" => 20
+      );
+
+      // added "$key =>" to function Show()
+      // obsługa tablic asocjacyjnych
+
+      Show($tabAssoc);
+      echo "<br><br>";
+
+      // sort($tabAssoc); // to sortowanie wywaliło klucze tablicy
+      asort($tabAssoc); // sortowanie rosnąco
+      Show($tabAssoc); echo "sortowanie rosnąco wg. wartości<br><br>";
+      arsort($tabAssoc); // sortowanie malejąco
+      Show($tabAssoc); echo "sortowanie malejąco wg. wartości<br><br>";
+      ksort($tabAssoc); // sortowanie wg kluczy rosnąco
+      Show($tabAssoc); echo "sortowanie rosnąco wg. klucza<br><br>";
+      krsort($tabAssoc); // sortowanie wg kluczy malejąco
+      Show($tabAssoc); echo "sortowanie malejąco wg. klucza<br><br>";
+
+
+      // Wyświetlanie danych
+      echo "vardump: ";
+      var_dump($tabAssoc);
+      echo "<br><br>";
+
+      echo "print_r: ";
+      print_r($tabAssoc);
+      echo "<br><br>";
+
+
+
 
     ?>
   </body>
