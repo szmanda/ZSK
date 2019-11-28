@@ -1,0 +1,114 @@
+CREATE DATABASE Studies
+  CHARACTER SET utf8
+  COLLATE utf8_general_ci;
+
+USE Studies
+
+CREATE TABLE Term (
+  termId INT(10) UNSIGNED AUTO_INCREMENT,
+  termCode VARCHAR(25) NULL,
+  PRIMARY KEY (termId)
+)ENGINE=INNODB;
+
+-- req. Term
+CREATE TABLE Student (
+  studentId INT(10) UNSIGNED AUTO_INCREMENT,
+  firstName VARCHAR(25) NULL,
+  lastName VARCHAR(25) NULL,
+  termId INT(10) UNSIGNED NULL,
+  PRIMARY KEY (studentId),
+  FOREIGN KEY (termId) REFERENCES Term(termId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=INNODB;
+
+CREATE TABLE Mark (
+  markId INT(10) UNSIGNED AUTO_INCREMENT,
+  mark INT(2) UNSIGNED NULL,
+  weight INT(2) UNSIGNED NULL DEFAULT 1,
+  percentage INT(4) UNSIGNED NULL,
+  description VARCHAR(100) NULL,
+  PRIMARY KEY (markId)
+)ENGINE=INNODB;
+
+CREATE TABLE FinalResult (
+  resultId INT(10) UNSIGNED AUTO_INCREMENT,
+  isPassed BOOLEAN NOT NULL,
+  finalMark INT(2) UNSIGNED NULL DEFAULT 1,
+  generalPercentage INT(4) UNSIGNED NULL,
+  comment VARCHAR(100) NULL,
+  PRIMARY KEY (resultId)
+)ENGINE=INNODB;
+
+CREATE TABLE Subject (
+  subjectId INT(10) UNSIGNED AUTO_INCREMENT,
+  PRIMARY KEY (resultId)
+)ENGINE=INNODB;
+
+-- req. Subject
+CREATE TABLE Course (
+  courseId INT(10) UNSIGNED AUTO_INCREMENT,
+  courseName VARCHAR(25) NULL,
+  subjectId INT(10) UNSIGNED NULL,
+  PRIMARY KEY (courseId),
+  FOREIGN KEY (subjectId) REFERENCES Subject(subjectId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=INNODB;
+
+-- req. Course, Mark, Student, FinalResult
+CREATE TABLE Student_Course (
+  studentId INT(10) UNSIGNED NULL,
+  courseId INT(10) UNSIGNED NULL,
+  resultId INT(10) UNSIGNED NULL,
+  FOREIGN KEY (studentId) REFERENCES Student(studentId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+  FOREIGN KEY (courseId) REFERENCES Course(courseId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+  FOREIGN KEY (resultId) REFERENCES FinalResult(resultId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=INNODB;
+
+-- -- --
+
+CREATE TABLE Lecturer (
+  lecturerId INT(10) UNSIGNED AUTO_INCREMENT,
+  firstName VARCHAR(25) NOT NULL,
+  lastName VARCHAR(25) NOT NULL,
+  PRIMARY KEY (lecturerId)
+)ENGINE=INNODB;
+
+CREATE TABLE Building (
+  buildingId INT(10) UNSIGNED AUTO_INCREMENT,
+  street VARCHAR(25) NULL,
+  num VARCHAR(5) NULL,
+  city VARCHAR(25) NULL,
+  PRIMARY KEY (buildingId)
+)ENGINE=INNODB;
+
+-- req. Building
+CREATE TABLE LectureHall (
+  lectureHallId INT(10) UNSIGNED AUTO_INCREMENT,
+  buildingId INT(10) UNSIGNED NULL,
+  PRIMARY KEY (lectureHallId),
+  FOREIGN KEY (buildingId) REFERENCES Building(buildingId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=INNODB;
+
+-- req LectureHall, lecturer
+CREATE TABLE Lecture (
+  lectureId INT(10) UNSIGNED AUTO_INCREMENT,
+  lectureHallId INT(10) UNSIGNED NULL,
+  lecturerId INT(10) UNSIGNED NULL,
+  PRIMARY KEY (lectureId),
+  FOREIGN KEY (lectureHallId) REFERENCES LectureHall(lectureHallId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+  FOREIGN KEY (lecturerId) REFERENCES Lecturer(lecturerId)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=INNODB;
