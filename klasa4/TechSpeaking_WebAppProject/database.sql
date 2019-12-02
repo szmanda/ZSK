@@ -22,7 +22,7 @@ CREATE TABLE userRank (
 CREATE TABLE stdUser (
   id_user INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   login VARCHAR(25) NOT NULL UNIQUE,
-  password VARCHAR(25) NOT NULL,
+  password VARCHAR(72) NOT NULL,
   email VARCHAR(100) NOT NULL,
   nick VARCHAR(25) NULL,
   points INT(10) UNSIGNED NULL DEFAULT 0,
@@ -35,13 +35,38 @@ CREATE TABLE stdUser (
   ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=INNODB;
 
-CREATE TABLE lang(
+
+-- due to some changes in project target this section was reorganised
+CREATE TABLE Collection(
+
+)ENGINE=INNNODB;
+
+CREATE TABLE Link(
+
+)ENGINE=INNNODB;
+
+CREATE TABLE FlashcardSide(
+
+)ENGINE=INNNODB;
+
+CREATE TABLE Lang(
   id_lang INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   lang_name VARCHAR(25) NOT NULL,
   icon_path VARCHAR(100) NULL,
   description VARCHAR(250) NULL,
   PRIMARY KEY (id_lang)
 )ENGINE=INNODB;
+
+CREATE TABLE User_Collection(
+
+)ENGINE=INNODB;
+
+
+
+-- registering progress
+CREATE TABLE SidePoints()
+
+
 
 CREATE TABLE wordCategory(
   id_category INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -50,7 +75,7 @@ CREATE TABLE wordCategory(
 )ENGINE=INNODB;
 
 -- needs a table lang and table wordCategory
-CREATE TABLE word (
+CREATE TABLE flashcardSide (
   id_word INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   word VARCHAR(50) NULL,
   definition VARCHAR(255) NULL,
