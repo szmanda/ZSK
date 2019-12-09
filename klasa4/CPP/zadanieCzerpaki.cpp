@@ -42,17 +42,25 @@ int main()
     int ruchyModulo = 0;
     int rozmiar = 3;
 
-    cout<<"Mozliwe wielkosci atomowe to: "<<czerpakA<<", "<<czerpakB<<", "<<roznica;
+    cout<<"Mozliwe wielkosci atomowe to: "<<czerpakA<<", "<<czerpakB<<", ";
     if (czerpakA!=czerpakB){
         ruchyModulo = czerpakA/czerpakB;
         int modulo = (czerpakB*(ruchyModulo+1))%czerpakA;
         rozmiar = 4;
         wielkosciAtomowe = new int[4]{czerpakA,czerpakB,roznica,modulo};
-        cout<<", "<<modulo<<endl;
+        if (wielkosciAtomowe[3]>wielkosciAtomowe[2]){
+            int pom = wielkosciAtomowe[2];
+            wielkosciAtomowe[2] = wielkosciAtomowe[3];
+            wielkosciAtomowe[3] = pom;
+            cout<<modulo<<", "<<roznica;
+        }
+        cout<<roznica<<", "<<modulo;
     }
     else {
+        cout<<roznica;
         wielkosciAtomowe = new int [3]{czerpakA,czerpakB,roznica};
     }
+    cout<<endl;
 
     while(true){
         if (Nalej(wielkosciAtomowe,rozmiar,&docelowa,ruchyModulo))
@@ -91,7 +99,7 @@ bool Nalej(int tab[],int rozmiar, int *docelowa,int ruchyModulo){
     do{
         i--;
         //cout<<"\n tab["<<i<<"] = "<<tab[i]<<" docelowa = "<<*docelowa; //
-        Sleep(500);
+        //Sleep(500);
     }while (tab[i-1]<=*docelowa&&i>0);
     cout<<"\n   przelewam do docelowa = "<<*docelowa<<", tab["<<i<<"] = "<<tab[i]; //
     switch (i){
