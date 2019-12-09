@@ -45,7 +45,7 @@ int main()
     cout<<"Mozliwe wielkosci atomowe to: "<<czerpakA<<", "<<czerpakB<<", "<<roznica;
     if (czerpakA!=czerpakB){
         ruchyModulo = czerpakA/czerpakB;
-        int modulo = czerpakA%(czerpakB*((ruchyModulo)+1));
+        int modulo = (czerpakB*(ruchyModulo+1))%czerpakA;
         rozmiar = 4;
         wielkosciAtomowe = new int[4]{czerpakA,czerpakB,roznica,modulo};
         cout<<", "<<modulo<<endl;
@@ -93,6 +93,7 @@ bool Nalej(int tab[],int rozmiar, int *docelowa,int ruchyModulo){
         //cout<<"\n tab["<<i<<"] = "<<tab[i]<<" docelowa = "<<*docelowa; //
         Sleep(500);
     }while (tab[i-1]<=*docelowa&&i>0);
+    cout<<"\n   przelewam do docelowa = "<<*docelowa<<", tab["<<i<<"] = "<<tab[i]; //
     switch (i){
         case 0:
             *docelowa-=tab[i];
@@ -100,7 +101,6 @@ bool Nalej(int tab[],int rozmiar, int *docelowa,int ruchyModulo){
             WylejCzerpA();
             break;
         case 1:
-            //<<"\n przelewam do docelowa = "<<*docelowa<<", tab["<<i<<"] = "<<tab[i]; //
             *docelowa-=tab[i];
             NapelnijCzerpB();
             WylejCzerpB();
