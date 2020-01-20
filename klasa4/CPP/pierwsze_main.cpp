@@ -45,7 +45,7 @@ int main()
     int p=0,q=0;
     srand(time(NULL));
     int los = rand()%sqr;
-    cout<<"\n"<<los<<endl;
+    //cout<<"\n"<<los<<endl;
     for (int i=los+sqr; i>2; i--){
         if (tab[i]==true){
             if (p!=0){
@@ -64,8 +64,8 @@ int main()
     cout<<"n="<<n<<endl;
 
     int e;
-    // e jest bledne
-    for (int i=q-50;i>2;i--){
+    // e jest poprawne
+    for (int i=2;i<n;i++){
         if (nwd(n,i)==1) {
             e = i;
             break;
@@ -84,18 +84,34 @@ int main()
     }
     cout<<"d="<<d<<endl;
 
-    // szyfrowanie wiadomoœci
+    // szyfrowanie wiadomoÅ“ci
 
     //klucz publiczby (e,n)
+    cout<<"\n---\nklucz publiczny:\n\te = "<<e;
+    cout<<"\n\tn = "<<n;
+
     //klucz prywatny (d,n)
+    cout<<"\n---\nklucz prywatny:\n\td = "<<d;
+    cout<<"\n\tn = "<<n;
 
-    // proces szyfrowania wiadomoœci
+
+    // proces szyfrowania wiadomoÅ“ci
     // 1. Otrzymujesz od adresata klucz publiczny (e,n)
-    // 2. zamieniasz wiasomoœæ na liczby naturalne t spelniajace warunek 0 < t < n
-    double t = 77;
-    // 3. szyfrowanie ka¿dej liczby t za pomoc¹ poni¿szej operacji:
+    // 2. zamieniasz wiasomoÅ“Ã¦ na liczby naturalne t spelniajace warunek 0 < t < n
+    /*
+        na przykÅ‚ad: 'Q' ma wartoÅ›Ä‡ ascii 81 wiÄ™c t=81
+    */
+    char message = 'Q';
+    int t = message;
+    cout<<"\n\n---\nwiadomosc: "<<message<<", ASCII: "<<t<<endl;
 
-    double c = pow(t,e)%n;
+
+    // 3. szyfrowanie kazdej liczby t za pomocÂ¹ ponizszej operacji:
+
+    long c = ((long)pow(t,e))%n;
+    cout<<"---\nzaszyfrowane: "<<c<<endl;
+
+
 
 
 
