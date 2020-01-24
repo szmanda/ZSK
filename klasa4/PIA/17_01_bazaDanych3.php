@@ -13,7 +13,6 @@
       require_once("17_01_scripts/function.php");
 
       $sql = "SELECT * FROM `user`";
-
       $result = mysqli_query($conn, $sql);
 
       echo <<< TABLE
@@ -36,13 +35,47 @@ TABLE;
           <td>$row[birthdate]</td>
           <td>$year</td>
           <td>
-            <a href="./17_01_scripts/del_user.php?id=$row[id]">usuń</a>
+            <a href="./17_01_scripts/del_user.php?id=$row[id]">Usuń</a>
+          </td>
+          <td>
+            <a href="./17_01_bazaDanych3.php?id_update=$row[id]">Aktualizuj</a>
           </td>
         </tr>
 ROW;
       }
       echo "</table>";
      ?>
+
+     <h3>Dodawanie użytkownika</h3>
+     <form action="./17_01_scripts/add_user.php" method="post">
+         <input type="text" name="name">
+         <input type="text" name="surname">
+         <input type="date" name="birthdate">
+         <input type="submit" name="button" value="Dodaj Użytkownika">
+     </form>
+
+     <?php
+        if (isset($_GET["id_update"])) {
+            $id_update = $_GET["id_update"];
+            $sql = "SELECT * FROM `user` WHERE `id` = '$id_update'";
+            $result = mysqli_query($conn, $sql);
+            $user = mysqli_fetch_assoc($result);
+
+            echo <<< UPDATE
+            <h3>Aktualizacja użytkownika</h3>
+            <form action="./17_01_scripts/add_user.php" method="post">
+                <input type="text" name="name" value="$user[name]">
+                <input type="text" name="surname" value="$user[surname]">
+                <input type="date" name="birthdate" value="$user[birthdate]">
+                <input type="submit" name="button" value="Dodaj Użytkownika">
+            </form>
+UPDATE;
+
+        }
+
+
+        mysqli_close($conn);
+      ?>
 
   </body>
 </html>
