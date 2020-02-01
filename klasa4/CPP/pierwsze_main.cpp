@@ -19,6 +19,7 @@ int nwd(int a, int b){
 
 int main()
 {
+    	// TODO: poprawić RSA n = p*q;
     int sqr = 1000;
 
     for (int i=0; i<sqr*sqr;i++)
