@@ -1,14 +1,27 @@
+<?php
+  // COOKIES
+  setcookie("test",0,time()+60*60*24);
+  $_COOKIE["test"] = 6;
+  // SESSION
+  session_start();
+  $_SESSION["test"] = 0;
+  //echo session_id();
+  require_once("./values.php")
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <?php require_once("./styles/styles.html") ?>
+    <title>Tech Speaking</title>
   </head>
-  <body>
-    <?php
-      require_once(./values.php)
-      
-      //header
-    ?>
+  <body class="back-secondary">
+    <?php require("structure/header.php") ?>
+
+ 
+
+
+
+    <?php require_once("./styles/scripts.html") ?>
   </body>
 </html>

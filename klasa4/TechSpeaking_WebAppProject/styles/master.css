@@ -1,0 +1,55 @@
+:root {
+  --bg-primary: #0A4008;
+  --bg-secondary: #403719;
+  --bg-accent: #82A633;
+  --primary: #E0E8A0;
+  --secondary: #878C61;
+  --accent: #95D904;
+}
+
+* {
+  color: white;
+  margin:0px;
+}
+.back-primary{
+  background-color: var(--bg-primary);
+}
+.back-secondary{
+  background-color: var(--bg-secondary);
+}
+.back-accent{
+  background-color: var(--bg-accent);
+}
+.primary{
+  color: var(--primary);
+}
+.secondary{
+  color: var(--secondary);
+}
+.accent{
+  color: var(--accent);
+}
+.navbar{
+  background-color: var(--bg-primary);
+  box-shadow: 0px 0px 6px 1px var(--accent);
+}
+.nav-item {
+  color: var(--accent);
+  //background-color: var(--bg-accent);
+  text-decoration: none;
+  border-radius: 3px;
+}
+.dropdown-menu {
+  background-color: var(--bg-accent)
+}
+.dropdown-item:hover {
+  background-color: var(--accent)
+}
+.dropdown-divider {
+  border-color: black;
+}
+#login {
+  position: absolute;
+  right: 80px;
+  top: 15px;
+}
