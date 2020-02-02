@@ -1,9 +1,13 @@
 <?php
   require_once("./scripts/connect.php");
+  $userExistError = '';
   $passwordError = '';
   $rpasswordError = '';
   $loginError = '';
-
+  if (isset($_GET["user"])) $userExistError = $_GET["user"];
+  if (isset($_GET["pass"])) $passwordError = $_GET["pass"];
+  if (isset($_GET["rep"])) $rpasswordError = $_GET["rep"];
+  if (isset($_GET["login"])) $loginError = $_GET["login"];
 
  ?>
  <div class="row mt-5 mr-0">
@@ -23,7 +27,8 @@
    <div class="col-xs-12 col-md-6">
      <div class="tile">
        <h2>Create new account</h2>
-       <form action="register.php" class="login" method="post">
+       <form action="./scripts/register.php" class="login" method="post">
+         <div class="bg-danger"><?php echo $userExistError ?></div>
          <input type="text" name="email" placeholder="e-mail"><br>
          <div class="bg-danger"><?php echo $passwordError ?></div>
          <input type="password" name="password" placeholder="password"><br>
