@@ -85,6 +85,25 @@ footer p{
   color: var(--bg-accent);
   margin-bottom: 3px;;
 }
+.row{
+  margin-right:0px;
+}
+.gridRow{
+  display: flex;
+}
+.gridLetter{
+  background-color: var(--bg-primary);
+  border: 2px solid var(--bg-accent);
+  text-align: center;
+  font-size: 240%;
+  padding-top: 4px;;
+  margin: 10px;
+  height:70px;
+  border-radius: 50px;
+}
+#grid{
+
+}
 ::placeholder{
   color: var(--bg-accent);
 }
