@@ -6,7 +6,6 @@
   --secondary: #878C61;
   --accent: #95D904;
 }
-
 * {
   color: white;
   margin:0px;
@@ -27,6 +26,9 @@
   color: var(--secondary);
 }
 .accent{
+  color: var(--accent);
+}
+.accent:hover{
   color: var(--accent);
 }
 .navbar{
@@ -57,14 +59,19 @@
 .tile h2{
   text-align: center;
 }
+form.login *{
+  padding-left: 5px;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  width: 80%;
+}
+form.login *.bg-danger{
+  margin-bottom: 0px;
+}
 form.login input{
   background-color: rgba(0,0,0,0.1);
   color: var(--accent);
   border: 2px solid var(--accent);
-  padding-left: 5px;
-  margin-top: 10px;
-  margin-left: 10%;
-  width: 80%;
   font-size: 120%;
 }
 form.login input[type="submit"]{

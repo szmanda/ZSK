@@ -17,12 +17,12 @@
   </head>
   <body class="back-secondary">
     <?php
-    //require("structure/header.php");
+    require("structure/header.php");
     //require("structure/grid.php");
-    //require("structure/login.php");
-    //require("structure/footer.html");
+    require("structure/login.php");
+    require("structure/footer.html");
     ?>
-    
+
 
     <?php require_once("./styles/scripts.html") ?>
   </body>
