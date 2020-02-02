@@ -16,10 +16,11 @@
     <title>Tech Speaking</title>
   </head>
   <body class="back-secondary">
-    <?php require("structure/header.php") ?>
-
- 
-
+    <?php
+    require("structure/header.php");
+    require("structure/login.php");
+    require("structure/footer.html");
+    ?>
 
 
     <?php require_once("./styles/scripts.html") ?>
