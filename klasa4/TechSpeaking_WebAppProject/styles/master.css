@@ -1,0 +1,121 @@
+:root {
+  --bg-primary: #0A4008;
+  --bg-secondary: #403719;
+  --bg-accent: #82A633;
+  --primary: #E0E8A0;
+  --secondary: #878C61;
+  --accent: #95D904;
+}
+* {
+  color: white;
+  margin: 0px;
+}
+.back-primary{
+  background-color: var(--bg-primary);
+}
+.back-secondary{
+  background-color: var(--bg-secondary);
+}
+.back-accent{
+  background-color: var(--bg-accent);
+}
+.primary{
+  color: var(--primary);
+}
+.secondary{
+  color: var(--secondary);
+}
+.accent{
+  color: var(--accent);
+}
+.accent:hover{
+  color: var(--accent);
+}
+.navbar{
+  background-color: var(--bg-primary);
+  box-shadow: 0px 0px 6px 1px var(--accent);
+}
+.nav-item {
+  color: var(--accent);
+  //background-color: var(--bg-accent);
+  text-decoration: none;
+  border-radius: 3px;
+}
+.dropdown-menu {
+  background-color: var(--bg-accent);
+}
+.dropdown-item:hover {
+  background-color: var(--accent);
+}
+.dropdown-divider {
+  border-color: black;
+}
+.tile{
+  background-color: rgba(255,255,255,0.1);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.tile h2{
+  text-align: center;
+}
+form.login div.bg-danger{
+  padding-left: 5px;
+  margin-bottom: 10px;
+  margin-left: 10%; !important;
+  width: 80%;
+}
+form.login *.bg-danger{
+  margin-bottom: 0px;
+}
+form.login input{
+  background-color: rgba(0,0,0,0.1);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-size: 120%;
+}
+form.login input[type="submit"]{
+  background-color: var(--bg-primary);
+  margin-top: 11px;
+  margin-bottom: 30px;
+}
+footer{
+  background-color: var(--bg-primary);
+  box-shadow: 0px -1px 6px 0px var(--accent);
+  text-align:center;
+  position:fixed;
+  width:100%;
+  left: 0;
+  bottom: 0;
+}
+footer p{
+  color: var(--bg-accent);
+  margin-bottom: 3px;;
+}
+.row{
+  margin-right:0px;
+}
+.gridRow{
+  display: flex;
+}
+.gridLetter{
+  background-color: var(--bg-primary);
+  border: 2px solid var(--bg-accent);
+  text-align: center;
+  font-size: 240%;
+  padding-top: 4px;;
+  margin: 10px;
+  height:70px;
+  border-radius: 50px;
+}
+#grid{
+
+}
+::placeholder{
+  color: var(--bg-accent);
+}
+#login {
+  position: absolute;
+  right: 80px;
+  top: 15px;
+}
