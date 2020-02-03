@@ -16,15 +16,16 @@ CREATE TABLE userRank (
   icon_path VARCHAR(100) NULL,
   PRIMARY KEY (id_rank)
 )ENGINE=INNODB;
+-- data:
+INSERT INTO `userrank` (`id_rank`, `rank_name`, `icon_path`) VALUES ('1', 'gold', NULL), ('2', 'silver', NULL), ('3', 'bronze', NULL);
 
 -- needs a table UserRank containing rank names
 -- needs a table UserStatus containing statuses of the users (eg. active, deleted)
 CREATE TABLE stdUser (
   id_user INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
-  login VARCHAR(25) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(72) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  nick VARCHAR(25) NULL,
+  role CHAR(1) NULL,
   points INT(10) UNSIGNED NULL DEFAULT 0,
   id_rank INT(10) UNSIGNED NULL,
   id_status INT(10) UNSIGNED NULL,
