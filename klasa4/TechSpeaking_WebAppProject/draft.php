@@ -18,6 +18,7 @@
   <body class="back-secondary">
     <?php
     require("structure/header.php");
+    //require("structure/grid.php");
     require("structure/login.php");
     require("structure/footer.html");
     ?>
