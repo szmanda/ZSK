@@ -14,10 +14,12 @@
 
 <?php
 // input from database
-$string = "computer mouse";
+$string = "objected oriented programming";
+$question = $string;
+
 ?>
 <script type="text/javascript">
-
+  let question = "<?php echo $question ?>"
   let word = "<?php echo $string; ?>";
   let sqr = 1;
   while (sqr**2<word.length) sqr++;
@@ -68,6 +70,8 @@ $string = "computer mouse";
 
   let answer = document.querySelector("h2");
   answer.innerHTML = "-";
+  document.querySelector("h1").innerText = question;
+
   function LetterClicked(b){
     let letter = b.innerHTML;
     if (array[solved]==letter){

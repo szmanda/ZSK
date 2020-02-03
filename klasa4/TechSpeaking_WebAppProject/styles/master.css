@@ -10,6 +10,10 @@
   color: white;
   margin:0px;
 }
+a {
+  color: var(--bg-accent);
+  text-decoration: none;
+}
 .back-primary{
   background-color: var(--bg-primary);
 }
@@ -59,7 +63,7 @@
 .tile h2{
   text-align: center;
 }
-form.login *{
+.formP *{
   padding-left: 5px;
   margin-bottom: 10px;
   margin-left: 10%;

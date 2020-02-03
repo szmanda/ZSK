@@ -32,7 +32,7 @@
   </ul>
   </div>
   <div id="login">
-    sign up | sign in
+    <a href="./loginForm.php">sign up | sign in</a>
   </div>
   </nav>
 
