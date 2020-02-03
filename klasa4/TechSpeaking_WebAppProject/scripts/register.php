@@ -19,7 +19,14 @@ if (isset($_POST['createButton']) && !empty($_POST['password']) && !empty($_POST
     if($password==$_POST["rpassword"]&&mb_strlen($password)>=8)
     {
       //creating new user
+<<<<<<< HEAD
       //$sql = "INSERT INTO `stduser`(`email`, `password`, `id_status`) VALUES (\'$email\',\'$password\',NULL)";
+=======
+<<<<<<< HEAD
+      $sql = "INSERT INTO `stduser`(`email`, `password`, `id_status`) VALUES (\'$email\',\'$password\',NULL)";
+=======
+>>>>>>> d8fda414db8241d3c565a2ccc5093b1816f462e5
+>>>>>>> e6eb9c76b4605fb9e3507c8c9f236076f973c945
     }
 
   }else{

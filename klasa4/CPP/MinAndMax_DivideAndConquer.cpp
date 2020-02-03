@@ -30,7 +30,7 @@ int main()
 void minAndMax(double t[], int n, double &min, double &max)
 {
 	int len = n, i = 2;
-	if (n%2) len -= 2; else len--; // podzielenie na 2 równe czesci wymaga parzystej liczby
+	if (n%2) len -= 2; else len--; // podzielenie na 2 rï¿½wne czesci wymaga parzystej liczby
 	if (t[0] <= t[1]){
 		min = t[0];
 		max = t[1];
@@ -39,7 +39,7 @@ void minAndMax(double t[], int n, double &min, double &max)
 		max = t[0];
 	}
 	while (i < len){
-		if (t[i] <= t[i+1]){ // metoda dziel i zwyciezaj polega na podziale tabeli na 2 mniejsze a nastepnie znalezienia ekstremów z tablicy o której wiadomo ze w niej sie pojawi
+		if (t[i] <= t[i+1]){ // metoda dziel i zwyciezaj polega na podziale tabeli na 2 mniejsze a nastepnie znalezienia ekstremï¿½w z tablicy o ktï¿½rej wiadomo ze w niej sie pojawi
 			if (t[i] < min) min = t[i];// tablica parzystych indesow
 			if (t[i+1] > max) max = t[i+1];// tablica indeksow nieparzystych
 		}else{
@@ -48,7 +48,7 @@ void minAndMax(double t[], int n, double &min, double &max)
 		}
 		i += 2;
 	}
-	if (n%2) // w przypadku nieparzystego n ostatni element zostje porównany osobno
+	if (n%2) // w przypadku nieparzystego n ostatni element zostje porï¿½wnany osobno
 	{
 	//	if (t[n-1] < min) min = t[n-1];
 	//	if (t[n-1] > max) max = t[n-1];

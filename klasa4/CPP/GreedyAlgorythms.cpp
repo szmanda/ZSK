@@ -37,7 +37,7 @@ int main()
 	// Knapsack Problem - problem plecakowy
 	KnapsackProblem();
 
-	
+
 
 	return 0;
 }
@@ -123,8 +123,8 @@ void KnapsackProblem() {
 	}
 	std:cout << "Summary: final value equals " << valueSum << ", weight " << weightSum << "/" << capacity << "\n\n";
 
-	
-	
+
+
 	// knapsack problem using dynamic programming, see also: Bellman's principle of optimality
 	// choosing the most optimal solution in given moment considering previous operations.
 	// this approach does not need sorting elements.

@@ -51,13 +51,13 @@ int main()
 	// requires <string>
 		// a. number to string
 			int integer = 94605;
-			string s1 = std::to_string(34); 
+			string s1 = std::to_string(34);
 			cout << s1 << endl;
 
 
 		// b. string to number
 			string s2 = "32537";
-			integer = stoi(s2); 
+			integer = stoi(s2);
 			cout << integer << endl;
 
 			string s3 = "6AE0";
@@ -65,7 +65,7 @@ int main()
 			cout << integer << endl;
 
 		//similarly:
-			double num1 = stod("78.045"); 
+			double num1 = stod("78.045");
 			float num2 = stof("13.6");
 			long num3 = stol("153");
 			long double num4 = stold("168.5");
@@ -74,4 +74,3 @@ int main()
 
 	return 0;
 }
-

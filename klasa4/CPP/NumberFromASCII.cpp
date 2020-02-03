@@ -36,7 +36,7 @@ int main()
 		wart += w * pow(b, n - i - 1);
 	}
 	cout << endl << wart<<endl;
-	
+
 	// zliczanie wartości za pomocą schematu Hornera:
 	// (((s[0]*b + s[1])*b + s[2])*b + s[3])...
 	n = 0;
@@ -48,6 +48,6 @@ int main()
  	}
 	}
 	cout << endl << wart;
-	
+
 	return 0;
 }
