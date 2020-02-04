@@ -14,7 +14,7 @@
    <div class="col-xs-12 col-md-6">
      <div class="tile">
        <h2>Login to your account</h2>
-       <form class="login formP" method="post">
+       <form action="./scripts/authenticate.php" class="login formP" method="post">
           <input type="text" name="email" placeholder="e-mail"><br>
           <input type="password" name="password" placeholder="password"><br>
           <div class="bg-danger"><?php echo $loginError ?></div>
