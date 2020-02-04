@@ -24,7 +24,7 @@ INSERT INTO `userrank` (`id_rank`, `rank_name`, `icon_path`) VALUES ('1', 'gold'
 CREATE TABLE stdUser (
   id_user INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  password VARCHAR(72) NOT NULL,
+  password VARCHAR(96) NOT NULL,
   role CHAR(1) NULL,
   points INT(10) UNSIGNED NULL DEFAULT 0,
   id_rank INT(10) UNSIGNED NULL,

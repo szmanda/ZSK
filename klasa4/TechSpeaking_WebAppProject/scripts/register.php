@@ -19,7 +19,10 @@ if (isset($_POST['createButton']) && !empty($_POST['password']) && !empty($_POST
     if($password==$_POST["rpassword"]&&mb_strlen($password)>=8)
     {
       //creating new user
-      $sql = "INSERT INTO `stduser`(`email`, `password`, `id_status`) VALUES (\"$email\",\"$password\",NULL)";
+
+      $hash = password_hash($password, PASSWORD_ARGON2ID, ['memory_cost' => 1<<12, 'time_cost' => 2, 'threads' => 2]);
+
+      $sql = "INSERT INTO `stduser`(`email`, `password`, `id_status`) VALUES (\"$email\",\"$hash\",NULL)";
       if (mysqli_query($conn,$sql)){
           $url = "../confirmEmail.php";
       }
