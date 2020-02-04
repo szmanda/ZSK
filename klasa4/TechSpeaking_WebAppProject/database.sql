@@ -37,18 +37,6 @@ CREATE TABLE stdUser (
 )ENGINE=INNODB;
 
 
--- due to some changes in project target this section was reorganised
-CREATE TABLE Collection(
-
-)ENGINE=INNNODB;
-
-CREATE TABLE Link(
-
-)ENGINE=INNNODB;
-
-CREATE TABLE FlashcardSide(
-
-)ENGINE=INNNODB;
 
 CREATE TABLE Lang(
   id_lang INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -58,17 +46,6 @@ CREATE TABLE Lang(
   PRIMARY KEY (id_lang)
 )ENGINE=INNODB;
 
-CREATE TABLE User_Collection(
-
-)ENGINE=INNODB;
-
-
-
--- registering progress
-CREATE TABLE SidePoints()
-
-
-
 CREATE TABLE wordCategory(
   id_category INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   category_name VARCHAR(25) NOT NULL,
@@ -76,7 +53,7 @@ CREATE TABLE wordCategory(
 )ENGINE=INNODB;
 
 -- needs a table lang and table wordCategory
-CREATE TABLE flashcardSide (
+CREATE TABLE word(
   id_word INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   word VARCHAR(50) NULL,
   definition VARCHAR(255) NULL,

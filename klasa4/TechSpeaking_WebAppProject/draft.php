@@ -18,13 +18,17 @@
   <body class="back-secondary">
     <?php
     require("structure/header.php");
-    require("structure/newWordForm.php");
+    //require("structure/newWordForm.php");
     //require("structure/grid.php");
+
+    //echo phpversion();
+
     require("structure/login.php");
     require("structure/footer.html");
     ?>
 
 
-    <?php require_once("./styles/scripts.html") ?>
+    <?php
+    require_once("./styles/scripts.html"); ?>
   </body>
 </html>
