@@ -10,13 +10,18 @@
   </head>
   <body class="back-secondary">
     <?php require("structure/header.php");?>
+    <h1 style="font-size: 6.2vw;">We are pleased to invite you</h1>
+    <h2 style="font-size: 4.4vw; padding-bottom:5vw;">for an exploration of ever so welcoming Tech Speak language learning web page</h2>
 
+    <div class="divider">
+
+    </div>
 
     <div class="row">
-      <div class="col-xs-12 col-xl-12 p-5">
+      <div class="col-xs-12 col-xl-12 px-4 pt-2">
         <div class="tile">
-          <h1 style="text-align: center; font-size:3.5vw;"><?php echo "second lang" ?></h1>
-          <h2 style="font-size: 8vw;">_ __ ________</h2>
+          <h1 class="g" style="text-align: center; font-size:-3.5vw;"><?php echo "second lang" ?></h1>
+          <h2 class="g" style="font-size: 8vw;">_ __ ________</h2>
           <div id="grid">
 
           </div>

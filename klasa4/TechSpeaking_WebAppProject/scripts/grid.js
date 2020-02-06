@@ -7,8 +7,8 @@ var sqr = 1;
 function GenerateGrid(mWord,mQuestion){
   word = mWord;
   solved = 0;
-  document.querySelector("h1").innerText = mQuestion;
-  let answer = document.querySelector("h2");
+  document.querySelector("h1.g").innerText = mQuestion;
+  let answer = document.querySelector("h2.g");
   answer.innerHTML = "-";
 
   while (sqr**2<word.length) sqr++;

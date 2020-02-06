@@ -34,14 +34,14 @@
     </li>
   </ul>
   </div>
-  <div id="login">
+  <div id="loginStatus">
     <?php
     if (isset($_SESSION["email"])){
       $email = explode('@',$_SESSION["email"])[0];
       echo <<< EMAIL
       <ul style="list-style-type:none;">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a style="padding:0px;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           $email
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
