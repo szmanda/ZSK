@@ -1,21 +1,17 @@
 <?php
-  // COOKIES
-  //setcookie("test",0,time()+60*60*24);
-  //$_COOKIE["test"] = 6;
-  // SESSION
   session_start();
 
   //echo session_id();
   require_once("./values.php");
 
   //for protected sites:
-  // if (isset($_SESSION["email"])){
-  //   // get data from database
-  //   $authanticated = true;
-  // }
-  // else{
-  //   header("location: loginForm.php");
-  // }
+  if (isset($_SESSION["email"])){
+    // get data from database
+    $authanticated = true;
+  }
+  else{
+    header("location: loginForm.php");
+  }
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,11 +24,11 @@
     <?php
     require("structure/header.php");
     //require("structure/newWordForm.php");
-    //require("structure/grid.php");
+    require("structure/grid.php");
 
     //echo phpversion();
 
-    require("structure/login.php");
+    //require("structure/login.php");
     require("structure/footer.html");
     ?>
 

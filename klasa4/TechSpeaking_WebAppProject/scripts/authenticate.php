@@ -1,4 +1,5 @@
 <?php
+session_start();
 $url="../loginForm.php?";
 if (isset($_POST['loginButton']) && !empty($_POST['password']) && !empty($_POST['email']))
 {
@@ -11,7 +12,7 @@ if (isset($_POST['loginButton']) && !empty($_POST['password']) && !empty($_POST[
 
   // check for the same e-mail in database
   require_once("./connect.php");
-  $sql = "SELECT `password` FROM `stduser` WHERE `email`=\"$email\"";
+  $sql = "SELECT * FROM `stduser` WHERE `email`=\"$email\"";
   $result = mysqli_query($conn,$sql);
   if ($result->num_rows===1){
     // there is given user
@@ -21,6 +22,10 @@ if (isset($_POST['loginButton']) && !empty($_POST['password']) && !empty($_POST[
     if($verified)
     {
       // authenticated succesfully!
+      $sql = "SELECT * FROM `stduser` WHERE `email`=\"$email\"";
+      $result = mysqli_query($conn,$sql);
+      $_SESSION["email"] = mysqli_fetch_assoc($result)["email"];
+      $url = "../index.php";
     }
     else{
       $url .= 'login=Enter correct password for authentication.';

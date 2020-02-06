@@ -1,7 +1,7 @@
 <header>
 
 
-  <nav class="navbar navbar-expand-sm navbar-dark back-secondary">
+  <nav class="navbar navbar-expand-md navbar-dark back-secondary">
   <a class="navbar-brand" href="#">
     Tech Speaking
   </a>
@@ -13,10 +13,13 @@
   <ul class="navbar-nav mr-auto">
     <!-- ACTIVE ELEMENT -->
     <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="./index.php">Home<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="./draft.php">Draft</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="./draftProtected.php">Protected</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,7 +35,28 @@
   </ul>
   </div>
   <div id="login">
-    <a href="./loginForm.php">sign up | sign in</a>
+    <?php
+    if (isset($_SESSION["email"])){
+      $email = explode('@',$_SESSION["email"])[0];
+      echo <<< EMAIL
+      <ul style="list-style-type:none;">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          $email
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="./scripts/logoff.php">Sign out</a>
+        </div>
+      </li>
+      </ul>
+EMAIL;
+    } else {
+      echo '<a href="./loginForm.php">sign up | sign in</a>';
+    }
+     ?>
   </div>
   </nav>
 
