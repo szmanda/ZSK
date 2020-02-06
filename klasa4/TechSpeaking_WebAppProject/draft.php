@@ -28,7 +28,7 @@
     <?php
     require("structure/header.php");
     //require("structure/newWordForm.php");
-    //require("structure/grid.php");
+    require("structure/grid.php");
 
     //echo phpversion();
 

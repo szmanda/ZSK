@@ -1,0 +1,17 @@
+.gridRow{
+  display: flex;
+}
+.gridLetter:hover {
+    transition: 0.1s;
+    border-width: 5px;
+}
+.gridLetter{
+  background-color: var(--bg-primary);
+  border: 2px solid var(--bg-accent);
+  text-align: center;
+  font-size: 240%;
+  padding-top: 1px;;
+  margin: 10px;
+  height:70px;
+  border-radius: 50px;
+}

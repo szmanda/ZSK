@@ -10,7 +10,7 @@
     $authanticated = true;
   }
   else{
-    header("location: loginForm.php");
+    header("location: ./loginForm.php");
   }
  ?>
 <!DOCTYPE html>
