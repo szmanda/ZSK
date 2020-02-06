@@ -56,7 +56,7 @@ function GenerateGrid(mWord,mQuestion){
 
 function LetterClicked(b){
   let letter = b.innerHTML;
-  let answer = document.querySelector("h2");
+  let answer = document.querySelector("h2.g");
   let width = 100/sqr;
 
   if (word.split("")[solved]==letter){
