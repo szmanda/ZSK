@@ -1,3 +1,5 @@
+SET 
+
 USE olejki_mysql;
 
 INSERT INTO Olejki (IDOlejku, NazwaOlejku)
@@ -39,7 +41,14 @@ set iloscopakowan = @ilosc
 where idolejku =
 (select idolejku from olejki where NazwaOlejku = 'Majeranek');
 
-
+-- lub też (nowsze) dodatkowa tabela gdyż nie można czytać i updateować tej samej tabeli
+update olejkiilosci
+set iloscopakowan = (SELECT * FROM( select iloscopakowan
+from olejkiilosci
+where idolejku =
+(select IdOlejku from olejki where NazwaOlejku = 'Bazylia')) xyz)
+where idolejku =
+(select idolejku from olejki where NazwaOlejku = 'Majeranek');
 
 UPDATE olejkiilosci
 SET iloscopakowan = iloscopakowan + 100
@@ -89,6 +98,8 @@ WHERE idolejku IN (
     GROUP BY idolejku
     HAVING COUNT(IDOstrzezenia) > 2
 );
+
+
 
 CREATE table a(
 b varchar(4) not null primary key
