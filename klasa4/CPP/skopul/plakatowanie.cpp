@@ -52,27 +52,29 @@ int liczPlakaty(int * tab, int start, int stop){
         //cout<<"min-"<<i;
       }
     }
+    cout<<"n="<<n;
     int wynik=1;
     ilePlakatow++;
     cout<<"WYNIK+1"<<endl;
     // przypadki miedzy minimami
     //cout<<"n="<<n<<endl;
-    for (int i =0; i<=n-2; i++) {
-      cout<<"klasyczne: i="<<i<<" n-2="<<n-2;
+    for (int i =0; i<=n;i++) { //uwaga 31314?
+      cout<<"klasyczne: i="<<i<<" n="<<n;
       //znalezienie nieminimalnego:
       int pierwszy=-1;
-      for (size_t j = i+1; j < n-2; j++) {
+      for (size_t j = i+1; j<=n; j++) {
         if (tab[j]>tab[minima[i]]){
-          cout<<"pierwszy: "<<pierwszy<<endl;
           pierwszy = j;
+          cout<<"pierwszy: "<<pierwszy<<endl;
           break;
         }
       }
       if (pierwszy>=0){
-        for (size_t j=pierwszy+1;j<n-2;j++){
+        for (size_t j=pierwszy+1;j<stop;j++){
           if (tab[j]==tab[minima[i]]){
             cout<<"ostatni: "<<j-1<<endl;
             wynik+= liczPlakaty(tab,pierwszy,j-1);
+            i=j-2;//ostatni
             break;
           }
         }
