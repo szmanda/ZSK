@@ -30,12 +30,12 @@ int findMaximum(int * tab, int start, int stop){
 }
 
 int liczPlakaty(int * tab, int start, int stop){
-  cout<<"dla start,stop: "<<start<<","<<stop<<"\n";
-  cout<<"\tmin: "<<tab[findMinimum(tab,start,stop)]<<"\n";
-  cout<<"\tmax: "<<tab[findMaximum(tab,start,stop)]<<"\n";
+  // cout<<"dla start,stop: "<<start<<","<<stop<<"\n";
+  // cout<<"\tmin: "<<tab[findMinimum(tab,start,stop)]<<"\n";
+  // cout<<"\tmax: "<<tab[findMaximum(tab,start,stop)]<<"\n";
   if (tab[findMinimum(tab,start,stop)]>=tab[findMaximum(tab,start,stop)]){ //czubek budynkow
 
-    cout<<"czWYNIK+1\n";
+    // cout<<"czWYNIK+1\n";
     ilePlakatow++; //global
     //cout<<ilePlakatow<<endl;
     return 1;
@@ -52,27 +52,27 @@ int liczPlakaty(int * tab, int start, int stop){
         //cout<<"min-"<<i;
       }
     }
-    cout<<"n="<<n;
+    // cout<<"n="<<n;
     int wynik=1;
     ilePlakatow++;
-    cout<<"WYNIK+1"<<endl;
+    // cout<<"WYNIK+1"<<endl;
     // przypadki miedzy minimami
     //cout<<"n="<<n<<endl;
     for (int i =0; i<=n;i++) { //uwaga 31314?
-      cout<<"klasyczne: i="<<i<<" n="<<n;
+      // cout<<"klasyczne: i="<<i<<" n="<<n;
       //znalezienie nieminimalnego:
       int pierwszy=-1;
       for (size_t j = minima[i]+1; j<=n; j++) {
         if (tab[j]>tab[minima[i]]){
           pierwszy = j;
-          cout<<"pierwszy: "<<pierwszy<<endl;
+          // cout<<"pierwszy: "<<pierwszy<<endl;
           break;
         }
       }
       if (pierwszy>=0){
         for (size_t j=pierwszy+1;j<stop;j++){
           if (tab[j]==tab[minima[i]]){
-            cout<<"ostatni: "<<j-1<<endl;
+            // cout<<"ostatni: "<<j-1<<endl;
             wynik+= liczPlakaty(tab,pierwszy,j-1);
             i=j-2;//ostatni
             break;
@@ -85,14 +85,14 @@ int liczPlakaty(int * tab, int start, int stop){
       i++;
     }
     // przypadki skrajne
-    cout<<"last min: "<<minima[n-1]<<endl;
+    // cout<<"last min: "<<minima[n-1]<<endl;
     if (minima[n-1]!=stop){
-      cout<<"last\n";
+      // cout<<"last\n";
       wynik+= liczPlakaty(tab,minima[n-1]+1,stop);
     }
-    cout<<"start = "<<start<<"minima[0] = "<<minima[0]<<endl;
+    //cout<<"start = "<<start<<"minima[0] = "<<minima[0]<<endl;
     if (start!=minima[0]){
-      cout<<"first\n";
+      //cout<<"first\n";
       wynik+= liczPlakaty(tab,start,minima[0]-1);
       //cout<<ilePlakatow<<endl;
     }
@@ -113,30 +113,6 @@ int main()
     }
     liczPlakaty(budynki,0,n-1);
     cout<<ilePlakatow;
-
-    // int minim = budynki[findMinimum(budynki,0,n-1)];
-    // int poprz=0;
-    // for (size_t i = 0; i < n; i++) {
-    //   if(budynki[i]==minim)
-    //   {
-    //     if (budynki[i-1]!=budynki[i]&&budynki[i+1]!=budynki[i]){
-    //       int m = budynki[findMinimum(budynki,poprz,i-1)];
-    //       int n = budynki[findMinimum(budynki,i+1,n)];
-    //       poprz=i+1;
-    //     } else if (budynki[i-1]==budynki[i]){
-    //       int m = budynki[findMinimum(budynki,i+1,n)];
-    //     } else if (budynki[i+1]==budynki[i]){
-    //       int m = budynki[findMinimum(budynki,poprz,i-1)]
-    //     }
-    //
-    //
-    //   }
-    //   else(
-    //     iloscPlakatow++;
-    //   )
-    // }
-
-
 
     return 0;
 }
