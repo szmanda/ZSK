@@ -1,0 +1,8 @@
+Zadanie1
+221 7
+Zadanie2
+149
+Zadanie3
+753
+Zadanie4
+5
