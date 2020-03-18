@@ -10,38 +10,43 @@ BEGIN
 SET NEW.name = 'Friendly';
 END;//
 delimiter ;
+ALTER TRIGGER friend.dodaj ENABLE;
 
 -- 2--------------------------------------------------
 -- Stwórz jeden lub więcej wyzwalaczy do zarządzania atrybutem rocznika nowych uczniów szkoły średniej. Wytycznie wyzwalacza - jeżeli wartość będzie niższa niż 9 lub większa niż 12, zmieniaj wartość na NULL. Z drugiej strony, jeżeli występuje wartość NULL dla rocznika, zmień ją na 9.
 -- wywala linia z WHEN()
 delimiter //
-CREATE OR REPLACE TRIGGER aktualizuj1
+CREATE OR REPLACE TRIGGER aktualizujGrade
 BEFORE UPDATE
 ON highschooler FOR EACH ROW
-WHEN(new.rocznik>12 OR new.rocznik<9)
 BEGIN
-  SET NEW.grade=NULL;
-END;//
-delimiter ;
-
--- nie działa
-delimiter //
-CREATE OR REPLACE TRIGGER
-BEFORE UPDATE
-ON highschooler FOR EACH
-WHEN(new.rocznik>12 OR new.rocznik<9)
-BEGIN
-  IF(NEW.grade=NULL)
-    SET NEW.grade=9;
-  ELSE
+  IF(new.grade>12 OR new.grade<9) THEN
     SET NEW.grade=NULL;
+  ELSEIF(new.grade=NULL) THEN
+    SET NEW.grade=9;
   END IF;
-END;
+END;//
 delimiter ;
 
 -- 3--------------------------------------------------
 -- Stwórz jeden lub więcej wyzwalaczy do zarządzania symertią w relacjach między przyjaciółmi (Freind). Zatem, jeżeli (A,B) zostanie skasowany z  'Friend', to wtedy (B,A) powinno zostać także wykasowane.
 -- Jeżeli (A,B) zostanie wstawione w 'Friend', wtedy (B,A) powinno zostać wstawione także. Nie należy przejmować się aktualizacją tabeli Friend.
+
+-- error przy insertowaniu danych:
+-- #1442 - Can't update table 'friend' in stored function/trigger because it is already used by statement which invoked this stored function/trigger
+delimiter //
+CREATE OR REPLACE TRIGGER symetriaInsert
+AFTER INSERT
+ON `friend` FOR EACH ROW
+BEGIN
+  INSERT INTO `friend` (`ID1`,`ID2`)
+  VALUES (NEW.ID2,NEW.ID1);
+END;//
+delimiter ;
+INSERT INTO friend VALUES(1510,1911);
+
+SELECT * FROM friend WHERE ID1=1510 OR ID2=1510;
+INSERT INTO friend VALUES(1510,1911);
 
 
 -- 4--------------------------------------------------
