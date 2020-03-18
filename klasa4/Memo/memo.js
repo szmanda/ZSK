@@ -9,10 +9,12 @@ function SpawnMemo(ClassName = "",type = "div",node = document.body) {
 function HideCard(card){
   card.style.transform = " rotateY(180deg)";
   setTimeout(()=>{card.firstChild.hidden=true;},250);
+  card.addEventListener("click", ttt);
 }
 function ShowCard(card){
   card.style.transform = " rotateY(0deg)";
   setTimeout(()=>{card.firstChild.hidden=false;},250);
+  card.removeEventListener("click", ttt);
 }
 function CreateCard(str){
   let mainMemo = document.querySelector(".mainMemo");
@@ -22,12 +24,32 @@ function CreateCard(str){
   txt.innerText=str;
   return obj;
 }
+let activeTile = null;
+function ttt(e){
+  let teraz = e.target;
+  let a = activeTile;
+  ShowCard(teraz);
+  if(activeTile==null){
+    activeTile = teraz;
+  }
+  else if(activeTile!==teraz){
+    // dziwne rzeczy
+    if(activeTile.val == teraz.val){
+      activeTile.className += " memoCardUnactive";
+      teraz.className += " memoCardUnactive";
+    }
+    else{
+      setTimeout(()=>{HideCard(teraz);HideCard(a)},1000);
+    }
+    activeTile = null;
+  }
+}
 
 window.onload = ()=>{
   // 9 emotek
   let tabA = [0,0,0,0,0,0,0,0,0,0,0,0];
   let tabB = ["☘️","🗝️","🌻","🚓","🚋","🍉","🍌","⚽","🛥️","🧯","💡","🚆"];
-  let activeTile = null;
+
 
   let allCards = [];
   for (let i=0; i<24; i++){
@@ -39,32 +61,9 @@ window.onload = ()=>{
     allCards[i] = CreateCard(tabB[rand]);
     allCards[i].val = rand;
   }
-  for (let i = 0; i<24; i++){
+  for (let i=0; i<24; i++){
     allCards[i].addEventListener("click", ttt);
   }
-  function ttt(e){
-    let teraz = e.target;
-    let a = activeTile;
-    ShowCard(teraz);
-    if(activeTile==null){
-      activeTile = teraz;
-    }
-    else if(activeTile!==teraz){
-      // dziwne rzeczy
-      if(activeTile.val == teraz.val){
-        activeTile.className += " memoCardUnactive";
-        teraz.className += " memoCardUnactive";
-        activeTile.removeEventListener("click", ttt);
-        teraz.removeEventListener("click", ttt);
-      }
-      else{
-        setTimeout(()=>{HideCard(teraz);HideCard(a)},1000);
-      }
-      activeTile = null;
-    }
-  }
-
-
 
   console.log();
 
