@@ -2,27 +2,42 @@
 -- 1--------------------------------------------------
 -- Stwórz wyzwalacz, przy użyciu którego nowi uczniowie szkoły średniej będą automatycznie nośić nazwę (name) - 'Friendly' tak jak wszyscy inni w ich roczniku. Zatem, po uruchomieniu wyzwalacza, otrzymamy ('Freindly', A) w tabeli Like dla każdego ucznia szkoły średniej A w tym samym roczniku
 -- co 'Freindly'
+delimiter //
 CREATE OR REPLACE TRIGGER dodaj
-AFTER INSERT
+BEFORE INSERT
 ON highschooler FOR EACH ROW
 BEGIN
-  :new.name:='Freindly';
-END;
+SET NEW.name = 'Friendly';
+END;//
+delimiter ;
 
 -- 2--------------------------------------------------
 -- Stwórz jeden lub więcej wyzwalaczy do zarządzania atrybutem rocznika nowych uczniów szkoły średniej. Wytycznie wyzwalacza - jeżeli wartość będzie niższa niż 9 lub większa niż 12, zmieniaj wartość na NULL. Z drugiej strony, jeżeli występuje wartość NULL dla rocznika, zmień ją na 9.
+-- wywala linia z WHEN()
+delimiter //
+CREATE OR REPLACE TRIGGER aktualizuj1
+BEFORE UPDATE
+ON highschooler FOR EACH ROW
+WHEN(new.rocznik>12 OR new.rocznik<9)
+BEGIN
+  SET NEW.grade=NULL;
+END;//
+delimiter ;
+
+-- nie działa
+delimiter //
 CREATE OR REPLACE TRIGGER
-AFTER UPDATE
+BEFORE UPDATE
 ON highschooler FOR EACH
 WHEN(new.rocznik>12 OR new.rocznik<9)
 BEGIN
-  IF :new.grade=NULL
-    :new.grade:=9;
+  IF(NEW.grade=NULL)
+    SET NEW.grade=9;
   ELSE
-    :new.grade:=NULL;
+    SET NEW.grade=NULL;
   END IF;
 END;
-
+delimiter ;
 
 -- 3--------------------------------------------------
 -- Stwórz jeden lub więcej wyzwalaczy do zarządzania symertią w relacjach między przyjaciółmi (Freind). Zatem, jeżeli (A,B) zostanie skasowany z  'Friend', to wtedy (B,A) powinno zostać także wykasowane.
