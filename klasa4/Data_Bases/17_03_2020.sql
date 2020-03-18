@@ -32,15 +32,22 @@ delimiter ;
 -- Stwórz jeden lub więcej wyzwalaczy do zarządzania symertią w relacjach między przyjaciółmi (Freind). Zatem, jeżeli (A,B) zostanie skasowany z  'Friend', to wtedy (B,A) powinno zostać także wykasowane.
 -- Jeżeli (A,B) zostanie wstawione w 'Friend', wtedy (B,A) powinno zostać wstawione także. Nie należy przejmować się aktualizacją tabeli Friend.
 
--- error przy insertowaniu danych:
+-- error przy insertowaniu danych?:
 -- #1442 - Can't update table 'friend' in stored function/trigger because it is already used by statement which invoked this stored function/trigger
 delimiter //
+CREATE OR REPLACE TRIGGER symetriaDelete
+AFTER DELETE
+ON `friend` FOR EACH ROW
+BEGIN
+  DELETE FROM friend WHERE ID1=old.ID2 AND ID2=old.ID1;
+END;//
+
 CREATE OR REPLACE TRIGGER symetriaInsert
 AFTER INSERT
 ON `friend` FOR EACH ROW
 BEGIN
   INSERT INTO `friend` (`ID1`,`ID2`)
-  VALUES (NEW.ID2,NEW.ID1);
+  VALUES (NEW.ID2, NEW.ID1);
 END;//
 delimiter ;
 INSERT INTO friend VALUES(1510,1911);
@@ -51,13 +58,46 @@ INSERT INTO friend VALUES(1510,1911);
 
 -- 4--------------------------------------------------
 -- Stwórz wyzwalacz, który automatycznie kasuje uczniów - absolwentów, gdy skończą szkołę , tj., gdy ich rocznik zostanie zaktualizowanay i przekroczy 12.
+delimiter //
+CREATE OR REPLACE TRIGGER absolwenci
+AFTER UPDATE
+ON `highschooler` FOR EACH ROW
+BEGIN
+  DELETE FROM highschooler WHERE grade>12;
+END;//
+delimiter ;
 
 
 -- 5--------------------------------------------------
 -- Stwórz wyzwalacz, który automatycznie kasuje uczniów - absolwentów, gdy skończą szkołę, tj., gdy ich rocznik zostanie zaktualizowanay i przekroczy 12.  (zad 4).
 -- Ponadto, stwórz wyzwalacz , który w momencie przeniesienia ucznia na wyższy rocznik przenosi także jego/jej kolegów.
+delimiter //
+CREATE OR REPLACE TRIGGER absolwenci
+BEFORE UPDATE
+ON `highschooler` FOR EACH ROW
+BEGIN
+  UPDATE `highschooler` SET grade = grade+1
+  WHERE ID IN(SELECT ID1 friend WHERE ID2 = old.ID)
+  -- dla poprawności danych:
+    OR ID IN(SELECT ID2 friend WHERE ID1 = old.ID);
+  DELETE FROM highschooler WHERE grade>12;
+END;//
+delimiter ;
 
 
 -- 6--------------------------------------------------
--- Stwóż wyzwalacz z następującym działaniem: Jeżeli A lubi B ale zostaje zaktualizowany do A lubiącego C, a B i C są przyjaciółmi 'friends', to wtedy B i C przestają być przyjaciółmi 'friends'.
+-- Stwórz wyzwalacz z następującym działaniem: Jeżeli A lubi B ale zostaje zaktualizowany do A lubiącego C, a B i C są przyjaciółmi 'friends', to wtedy B i C przestają być przyjaciółmi 'friends'.
+-- Stwórz wyzwalacz: Załóżmy że A lubił B, natomiast ten rekord został zmieniony na A lubi C. Z tego wynika że  Należy usunąć B przyjaźni się z C czyli poprzednie ID2 przyjaźni się z nowym  ID2
 -- Nie zapomnij kasować przyjaźni i upewnij się, że wyzwalacz tylko uruchomi się gdy lubiana "liked" (ID2) osoba zostaje zmieniona, ale lubienie "liking" (ID1) osoby nie zostaje zmienione.
+
+delimiter //
+CREATE OR REPLACE TRIGGER zmiana
+BEFORE UPDATE
+ON `likes` FOR EACH ROW
+BEGIN
+  IF (new.ID2 IS NOT NULL) THEN
+    DELETE FROM `friend`
+    WHERE ID1=old.ID2 AND ID2= new.ID2;
+  END IF;
+END;//
+delimiter ;
