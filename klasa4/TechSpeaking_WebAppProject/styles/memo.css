@@ -1,0 +1,34 @@
+.mainMemo{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.memoCard{
+  display: block;
+  box-sizing: border-box;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  padding: 7px;
+  padding-top:50px;
+  background-color: var(--bg-primary);
+  color: var(--accent);
+  font-size: 150%;
+  text-align: center;
+  border: 3px solid var(--bg-accent);
+  border-radius: 25px;
+  box-shadow: inset 0 0 50px -20px var(--bg-accent);
+  transition: padding-top 0.2s, box-shadow 0.2s,border-color 0.2s,transform 0.5s;
+}
+.memoCard * {
+  color: inherit;
+}
+.memoCard:hover{
+  padding-top:51px;
+  box-shadow: inset 0 0 40px -10px var(--accent);
+  border-color: var(--accent);
+}
+.memoCardUnactive{
+  opacity: 0.5;
+  box-shadow: 0 0 40px -15px var(--secondary) !important;
+}

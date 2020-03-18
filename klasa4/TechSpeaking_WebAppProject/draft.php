@@ -28,11 +28,14 @@
     <?php
     require("structure/header.php");
     //require("structure/newWordForm.php");
-    require("structure/grid.php");
+
+    include("structure/memo.php");
+
+    //require("structure/grid.php");
 
     //echo phpversion();
 
-    require("structure/login.php");
+    //require("structure/login.php");
     require("structure/footer.html");
     ?>
 

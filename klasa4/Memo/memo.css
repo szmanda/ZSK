@@ -1,0 +1,51 @@
+:root {
+  --bg-primary: #0A4008;
+  --bg-secondary: #403719;
+  --bg-accent: #82A633;
+  --primary: #E0E8A0;
+  --secondary: #878C61;
+  --accent: #95D904;
+}
+
+body{
+    background-color: var(--bg-secondary);
+}
+.mainMemo{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.memoCard{
+  display: block;
+  margin: 10px;
+  width:  140px;
+  height: 140px;
+  padding: 7px;
+  padding-top:50px;
+  background-color: var(--bg-primary);
+  color: var(--accent);
+  font-size: 150%;
+  text-align: center;
+  border: 3px solid var(--bg-accent);
+  border-radius: 25px;
+  box-shadow: inset 0 0 50px -20px var(--bg-accent);
+  transition: padding-top 0.2s, box-shadow 0.2s,border-color 0.2s,transform 0.5s;
+  transform: rotateY(180deg);
+  transition-timing-function: linear;
+  font-size:80px;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+.memoCard:hover{
+  padding-top:11px;
+  box-shadow: inset 0 0 40px -10px var(--accent);
+  border-color: var(--accent);
+}
+.memoCardUnactive{
+  opacity: 0.5;
+  box-shadow: 0 0 40px -15px var(--secondary) !important;
+}
+p{
+    padding:0;
+    margin:0;
+}
