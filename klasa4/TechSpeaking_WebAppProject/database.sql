@@ -46,6 +46,10 @@ CREATE TABLE Lang(
   PRIMARY KEY (id_lang)
 )ENGINE=INNODB;
 
+INSERT INTO `lang` (`id_lang`, `lang_name`, `icon_path`, `description`) VALUES
+  (1, 'English', NULL, NULL),
+  (2, 'Polish', NULL, NULL);
+
 CREATE TABLE wordCategory(
   id_category INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
   category_name VARCHAR(25) NOT NULL,

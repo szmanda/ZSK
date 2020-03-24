@@ -12,5 +12,24 @@
 </div>
 <script src="./scripts/grid.js"></script>
 <script>
-  GenerateGrid("objected oriented programming","programowanie obiektowe");
+  let que,ans;
+  <?php
+    require_once("./scripts/connect.php");
+
+    $sql = "SELECT a.`id_word` AS id, a.`word` AS word, a.`definition` AS def,"
+        . " b.`id_word` AS idtrans, b.`word` AS trans, b.`definition` AS deftrans\n"
+        . "FROM `word` a\n"
+        . "INNER JOIN `word` b\n"
+        . "	ON a.`id_translation` = b.`id_word`\n"
+        . "ORDER BY RAND()\n"
+        . "LIMIT 1";
+
+    $result = mysqli_query($conn,$sql);
+
+    while ($row = mysqli_fetch_assoc($result)){
+    echo "que = \"".$row["word"]."\";\n";
+    echo "ans = \"".$row["trans"]."\";\n";
+    }
+  ?>
+  GenerateGrid(que,ans);
 </script>

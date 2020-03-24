@@ -9,10 +9,12 @@ function SpawnMemo(ClassName = "",type = "div",node = document.body) {
 function HideCard(card){
   card.style.transform = " rotateY(180deg)";
   setTimeout(()=>{card.firstChild.hidden=true;},250);
+  card.addEventListener("click", ttt);
 }
 function ShowCard(card){
   card.style.transform = " rotateY(0deg)";
   setTimeout(()=>{card.firstChild.hidden=false;},250);
+  card.removeEventListener("click", ttt);
 }
 function CreateCard(str){
   let mainMemo = document.querySelector(".mainMemo");
@@ -22,30 +24,50 @@ function CreateCard(str){
   txt.innerText=str;
   return obj;
 }
-
-window.onload = ()=>{
-  // 9 emotek
-  let tabA = [0,0,0,0,0,0,0,0,0];
-  let tabB = ['🎈','b','c','d','e','f','g','h','i'];
-
-  //let myCard = SpawnMemo("memoCard","div",mainMemo);
-  //let cardContent = SpawnMemo("","p",myCard);
-  //cardContent.innerHTML = "sss"
-  let s = CreateCard("ss");
+let activeTile = null;
+function ttt(e){
+  let teraz = e.target;
+  let a = activeTile;
+  ShowCard(teraz);
+  if(activeTile==null){
+    activeTile = teraz;
+  }
+  else if(activeTile!==teraz){
+    // dziwne rzeczy
+    if(activeTile.val == teraz.val){
+      activeTile.className += " memoCardUnactive";
+      teraz.className += " memoCardUnactive";
+    }
+    else{
+      setTimeout(()=>{HideCard(teraz);HideCard(a)},1000);
+    }
+    activeTile = null;
+  }
+}
+function StartMemoGame(tabQue,tabAns){ // 12 elements
+  let tabA = [0,0,0,0,0,0,0,0,0,0,0,0];
 
   let allCards = [];
-  for (let i=0; i<18; i++){
+  for (let i=0; i<24; i++){
     let rand;
     do{
-      rand = getRandomInt(0,9);
+      rand = getRandomInt(0,11);
     }while(tabA[rand]>=2);
     tabA[rand]++;
-    allCards[i] = CreateCard(tabB[rand]);
+    if (tabA[rand]==1)
+      allCards[i] = CreateCard(tabQue[rand]);
+    else
+      allCards[i] = CreateCard(tabAns[rand]);
+    allCards[i].val = rand;
   }
+  for (let i=0; i<24; i++){
+    allCards[i].addEventListener("click", ttt);
+  }
+}
 
-
-
-
-  console.log();
+window.onload = ()=>{
+  //tabQue = ["☘️","🗝️","🌻","🚓","🚋","🍉","🍌","⚽","🛥️","🧯","💡","🚆"];
+  //tabAns = ["☘️a","🗝a️","🌻a","🚓a","🚋a","🍉a","🍌a","⚽a","🛥a️","🧯a","💡a","🚆a"];
+  //StartMemoGame(tabQue,tabAns);
 
 };
