@@ -1,0 +1,45 @@
+CREATE DATABASE bank;
+
+USE bank;
+
+CREATE TABLE Bank_klienci
+(
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Imie VARCHAR(20) NOT NULL,
+Nazwisko VARCHAR(20) NOT NULL,
+Miasto VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Bank_konta
+(
+ID INT NOT NULL,
+nrKonta CHAR(26) NOT NULL PRIMARY KEY,
+Saldo INT NOT NULL,
+CONSTRAINT fk_ID FOREIGN KEY (ID) REFERENCES Bank_klienci (ID)
+
+);
+
+
+INSERT INTO  Bank_klienci(Imie, Nazwisko, Miasto) VALUES
+('Anna', 'Braun', 'Warsaw'),
+('Celia', 'Donut', 'Berlin'),
+('Ellie', 'Fine', 'Berlin'),
+('Gloria', 'Hint', 'Paris'),
+('Ian', 'Johnson', 'Warsaw'),
+('Kelly', 'Long', 'Paris'),
+('Merry', 'Nice', 'Paris'),
+('Olaf', 'Priceless', 'Berlin'),
+('Richard', 'Short', 'Warsaw'),
+('Tim', 'Uncle', 'Warsaw');
+
+INSERT INTO Bank_konta(ID, nrKonta, Saldo) VALUES
+(1, '12345678932165498714785236', 1652),
+(2, '85235678932165498714765416', 15698),
+(3, '74135678932165498714789632', 9652),
+(4, '96815678932165498714783258', 10367),
+(5, '32175678932165498714783699', 357),
+(6, '86115678932165498714781147', 14631),
+(7, '33585678932165498714783247', 11900),
+(8, '77565678932165498714786874', 3549),
+(9, '49635678932165498714780258', 2463),
+(10, '10285678932165498714783049', 7681);

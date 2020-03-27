@@ -14,7 +14,7 @@
     <div class="divider" style="margin-bottom: 1vh;"></div>
 
     <h1 style="font-size: 6.2vw;">We are pleased to invite you</h1>
-    <h2 style="font-size: 4.4vw; text-align:">for an exploration of ever so welcoming Tech Speak language learning web page</h2>
+    <h2 style="font-size: 4.4vw; text-align:">for an exploration of ever so welcoming Tech Speak language learning website</h2>
 
     <div class="divider"></div>
 
