@@ -68,9 +68,9 @@ int main()
     file<<"(z pominięciem zdyskfalifikowanych)\n"
     for (int i = 0; i < 1000; i++) {
       if (seria[i] >= maxSeria)
-        cout << i + 1 << "\n";
+        file << i + 1 << "\n";
     }
-    cout<<maxSeria;
+    file<<maxSeria;
     file<<endl;
     file.close();
     return 0;
