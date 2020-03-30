@@ -1,3 +1,4 @@
+<div class="wynik"></div>
 <div class="row">
   <div class="col-xs-12 col-xl-12 pt-2 px-4">
     <div class="tile">

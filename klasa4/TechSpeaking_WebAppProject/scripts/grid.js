@@ -1,4 +1,20 @@
-console.log("grid.js");
+console.log("grid.js")
+
+function CalculatePoints(score = 0){
+  console.log("endscreen");
+  let endScreen = document.querySelector(".wynik");
+  endScreen.innerHTML = "<h1 style=\"font-size: 6.2vw;\">You won!</h1><h2>You earned "+score+" points!</h2>";
+
+  let obj = document.createElement("div");
+  obj.className = "gridLetter";
+  let b = endScreen.appendChild(obj);
+  b.innerText = "next one!";
+  b.style.marginRight = "10%";
+  b.style.marginLeft = "10%";
+  b.addEventListener("click", function (){
+    window.location.href = "./scripts/addPoints.php?p="+score+"&r=../grid.php";
+  });
+}
 
 var word;
 var solved;
@@ -66,7 +82,10 @@ function LetterClicked(b){
     b.setAttribute("style",'width:'+width+'%; background-color: var(--bg-accent)');
     console.log("briliant!");
     if (solved==word.length){
+      //CalculatePoints()
       console.log("you have completed the task!");
+      points = (solved/2>0) ? solved/2 : 1;
+      CalculatePoints(parseInt(points))
     }
   }
 }

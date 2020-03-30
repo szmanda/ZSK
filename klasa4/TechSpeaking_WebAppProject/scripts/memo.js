@@ -1,3 +1,23 @@
+function CalculatePoints(endScreen, score = 0){
+  let obj = document.createElement("div");
+  obj.className = "gridLetter";
+  let b = endScreen.appendChild(obj);
+  b.innerText = "next one!";
+  b.style.marginRight = "10%";
+  b.style.marginLeft = "10%";
+  b.addEventListener("click", function (){
+    window.location.href = "./scripts/addPoints.php?p="+score+"&r=../memo.php";
+  });
+}
+function Score(score){
+  let endScreen = document.querySelector(".wynik");
+  endScreen.innerHTML = "<h2>score: "+score+"</h2>";
+}
+function EndGame(score){
+  let endScreen = document.querySelector(".wynik");
+  endScreen.innerHTML = "<h1 style=\"font-size: 6.2vw;\">You won!</h1><h2>score: "+score+"</h2>"
+  CalculatePoints(endScreen,score);
+}
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * Math.floor(max-min+1))+min;
 }
@@ -37,6 +57,10 @@ function ttt(e){
     if(activeTile.val == teraz.val){
       activeTile.className += " memoCardUnactive";
       teraz.className += " memoCardUnactive";
+      score++;
+      console.log("score: "+score);
+      Score(score)
+      if (score >= 12) EndGame(score);
     }
     else{
       setTimeout(()=>{HideCard(teraz);HideCard(a)},1000);
@@ -46,6 +70,8 @@ function ttt(e){
 }
 function StartMemoGame(tabQue,tabAns){ // 12 elements
   let tabA = [0,0,0,0,0,0,0,0,0,0,0,0];
+  score = 0;
+  Score(0);
 
   let allCards = [];
   for (let i=0; i<24; i++){

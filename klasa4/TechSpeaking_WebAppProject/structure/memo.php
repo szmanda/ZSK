@@ -1,6 +1,7 @@
+<div class="wynik"></div>
 <div class="mainMemo">
-
 </div>
+
 <script src="./scripts/memo.js"></script>
 <script>
 let que = [];

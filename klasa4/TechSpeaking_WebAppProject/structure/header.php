@@ -16,20 +16,20 @@
       <a class="nav-link" href="./index.php">Home<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="./draft.php">Draft</a>
+      <a class="nav-link" href="./memo.php">Memory</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./draftProtected.php">Protected</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
+        Learn
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="./memo.php">Memory</a>
+        <a class="dropdown-item" href="./grid.php">Grid</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="./stat.php">Stats</a>
       </div>
     </li>
   </ul>
