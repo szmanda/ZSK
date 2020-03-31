@@ -1,5 +1,9 @@
 <?php
-  session_start();
+session_start();
+require_once("./values.php");
+if (isset($_SESSION["email"])){
+  header("location: ./loggedin.php");
+}
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
