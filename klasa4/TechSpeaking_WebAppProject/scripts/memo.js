@@ -2,7 +2,7 @@ function CalculatePoints(endScreen, score = 0){
   let obj = document.createElement("div");
   obj.className = "gridLetter";
   let b = endScreen.appendChild(obj);
-  b.innerText = "next one!";
+  b.innerHTML = 'get yours '+score+'<img class="coin" src="./images/coinIcon.svg" alt="c" style="margin-left:3px; width:30px;">';
   b.style.marginRight = "10%";
   b.style.marginLeft = "10%";
   b.addEventListener("click", function (){
